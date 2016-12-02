@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2016-12-01 17:38:18.962099 UTC
+2016-12-02 15:40:51.911566 UTC
 
 interface day1-0.1.0.0-2DJsIII43shE8J8wmkepWa:Lib 8001
-  interface hash: bdf5e64217a152d03de81abe72349d19
+  interface hash: f341702ea6e3ee257a7aabb9f3886800
   ABI hash: 2537ba31a18dce7dbf0ced85226af05c
   export-list hash: aa47a8ad285e6f521902e40282ea797d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -22,7 +22,6 @@ family instance modules: base-4.9.0.0:Control.Applicative
                          base-4.9.0.0:Data.Monoid base-4.9.0.0:Data.Type.Equality
                          base-4.9.0.0:GHC.Generics base-4.9.0.0:GHC.IO.Exception
                          base-4.9.0.0:GHC.TypeLits
-import  -/  base-4.9.0.0:GHC.Num 48f506a8f4ecf06285d0a0706594dcc0
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
 import  -/  base-4.9.0.0:System.IO ad985d7a3fc986e9b9c610fb344d9106
 import  -/  ghc-prim-0.5.0.0:GHC.Types 7378e41b7749213c8c88ceb6b0665d4c

@@ -33,13 +33,6 @@ turn dir lor = directions!!newDirectionIndex
                               L -> (oldDirectionIndex + (length directions) - 1) `mod` (length directions)
         oldDirectionIndex = getDirectionIndex dir
 
-move :: Position -> Direction -> Distance -> [Position]
-move (x, y) dir distance
-  | dir == North = [(x + distance, y)]
-  | dir == East  = [(x, y + distance)]
-  | dir == South = [(x - distance, y)]
-  | dir == West = [(x, y - distance)]
-
 
 tuppleMove :: (Position, Direction) -> (Position, Direction)
 tuppleMove ((x, y), North) = ((x + 1, y), North)
@@ -48,9 +41,9 @@ tuppleMove ((x, y), South) = ((x - 1, y), South)
 tuppleMove ((x, y), West) = ((x, y - 1), West)
 
 
-move' :: (Position, Direction) -> Distance -> [Position]
-move' (pos, dir) distance = if (distance > 0)
-                               then pos:(move' (tuppleMove (pos, dir)) (distance - 1))
+move :: (Position, Direction) -> Distance -> [Position]
+move (pos, dir) distance = if (distance > 0)
+                               then pos:(move (tuppleMove (pos, dir)) (distance - 1))
                                else [pos]
 
 
@@ -74,9 +67,8 @@ tokenize (x:xs)
 followMap :: Position -> Direction -> [Token String] -> [Position]
 followMap pos _ [] = [pos]
 followMap pos dir (token:tokenList) = case token of
-                                        Move distance -> let _move = tail $ followMap (last $ positions) dir tokenList
-                                                             positions = move' (pos, dir) (stringToInt distance)
-                                                          in positions ++ _move
+                                        Move distance -> let positions = move (pos, dir) (stringToInt distance)
+                                                          in positions ++ (tail $ followMap (last $ positions) dir tokenList)
                                         Turn lor -> followMap pos (turn dir (charToLeftOrRight $ head lor)) tokenList
                                         Pass -> followMap pos dir tokenList
 
