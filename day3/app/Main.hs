@@ -11,9 +11,11 @@ main :: IO ()
 main = do
   contents <- readFile "data/data"
 
-  let triangles = filterValidTriangles (parse contents)
+  let trianglesStep1 = filterValidTriangles (parse contents)
+  let trianglesStep2 = filterValidTriangles (columnParser contents)
 
-  putStrLn $ show triangles
+  putStrLn "Valid triangle count (step 1): "
+  putStrLn $ show $ length trianglesStep1
 
-  putStrLn "Valid triangle count: "
-  putStrLn $ show $ length triangles
+  putStrLn "Valid triangle count (step 2): "
+  putStrLn $ show $ length trianglesStep2
